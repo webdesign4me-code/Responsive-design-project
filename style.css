@@ -1,0 +1,108 @@
+html{
+    scroll-behavior: smooth;
+}
+body {
+    background-color: #dedede;
+    padding: 5px;
+    margin: 15px;
+    font-size: 25px;
+    font-family:Arial, sans-serif;
+}
+
+h1 {
+    text-align: center;
+    font-family:Arial, sans-serif;
+    font-size: 1.95em;
+}
+
+h2{
+    text-align:center;
+  }
+
+li{
+    margin-top: 20px;
+}
+
+img{
+    border: 5px solid maroon;
+    border-radius: 35px;
+    width: 100%;
+  }
+
+.label{
+    text-align: center;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr;   /* mobile: one column */
+  justify-content: space-evenly;
+  row-gap: 10px;
+}
+
+.grid img {
+  display: grid;
+  object-fit: cover;
+  width: 85%;
+}
+
+/* Tablet @ 772px ===== */
+@media screen and (min-width: 772px) {
+  .grid{
+    grid-template-columns: 1fr 1fr;
+    column-gap: 7%; 
+  }
+
+  .grid img {
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+    border-radius: 50%; 
+                                     /* 5b: circular shape */
+  }
+
+  .grid > div:last-child {
+    grid-column: 1 / -1;                    /* 5c: last img spans both columns */
+  }
+}
+
+/* Large screens @ 992px */
+@media screen and (min-width: 992px) {
+  /* 6a: every 3rd img spans both columns */
+  .grid {
+    grid-template-columns: 1fr 1fr;
+    column-gap: 7%;
+  }
+  .grid > div:nth-child(3n) {
+    grid-column: 1 / -1;
+  }
+
+  /* 6b: remove border radius */
+  .grid img {
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+    border-radius: 0;
+    
+  }
+}
+
+/* ===== 7) Reduced motion ===== */
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    scroll-behavior: auto !important;  /* 7a: remove scroll behavior */
+  }
+}
+
+/* ===== 8) Dark color scheme ===== */
+@media (prefers-color-scheme: dark) {
+  .grid img {
+    background: #111;     /* 8a: dark background */
+    color: #ffe680;       /* 8b: yellow-ish text */
+    border-color: #000;   /* 8c: black border */
+  }
+
+  body {
+    background: #000;
+    color: #eee;
+  }
+}
